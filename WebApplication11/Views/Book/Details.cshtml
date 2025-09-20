@@ -1,0 +1,25 @@
+@model WebApplication11.Models.Book
+
+<h1>@Model.Title</h1>
+<p>Author: @Model.Author</p>
+<p>Genre: @Model.Genre</p>
+<p>Price: @Model.Price</p>
+
+<hr />
+<h3>Comments</h3>
+@await Component.InvokeAsync("Comments", new { bookId = Model.Id })
+
+<hr />
+<h4>Leave a comment</h4>
+<form asp-action="AddComment" method="post">
+    <input type="hidden" name="bookId" value="@Model.Id" />
+    <div class="mb-2">
+        <label class="form-label">Name</label>
+        <input name="authorName" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Text</label>
+        <textarea name="content" class="form-control" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">post</button>
+</form>

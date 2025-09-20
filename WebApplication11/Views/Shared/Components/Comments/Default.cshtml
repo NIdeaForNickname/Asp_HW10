@@ -1,0 +1,15 @@
+@model IEnumerable<WebApplication11.Models.Comment>
+@if (Model.Any())
+{
+    foreach (var c in Model)
+    {
+        <div class="card mb-2 p-2">
+            <div>@c.AuthorName : @c.CreatedAt.ToLocalTime().ToString("g")</div>
+            <div>@c.Content</div>
+        </div>
+    }
+}
+else
+{
+    <p>No Comments</p>
+}
